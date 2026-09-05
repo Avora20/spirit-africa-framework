@@ -1,0 +1,548 @@
+/* ===== SPIRIT OF AFRICA — Base Styles ===== */
+
+:root {
+    --gold: #e5a93b;
+    --terracotta: #d35400;
+    --ochre: #7c3f1d;
+    --night: #1a130e;
+    --emerald: #27ae60;
+    --parchment: #fdfbf7;
+    --overlay-bg: rgba(26, 19, 14, 0.92);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    color: var(--parchment);
+    background-color: var(--night);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: hidden;
+}
+
+#app {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+#game-container {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+/* ===== OVERLAY LAYERS ===== */
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    pointer-events: auto;
+}
+
+.menu-overlay {
+    background: var(--overlay-bg);
+    flex-direction: column;
+}
+
+.hud-overlay {
+    background: transparent;
+    pointer-events: none;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 12px 16px;
+}
+
+.hud-overlay > * {
+    pointer-events: auto;
+}
+
+.modal-overlay {
+    background: rgba(26, 19, 14, 0.85);
+    backdrop-filter: blur(4px);
+}
+
+/* ===== MENU CONTENT ===== */
+
+.menu-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    padding: 20px;
+    max-width: 420px;
+    width: 90%;
+}
+
+.game-title h1 {
+    font-size: 2.4rem;
+    color: var(--gold);
+    text-align: center;
+    margin: 0;
+    letter-spacing: 3px;
+    text-shadow: 0 2px 8px rgba(229, 169, 59, 0.3);
+}
+
+.game-title .subtitle {
+    text-align: center;
+    color: rgba(253, 251, 247, 0.6);
+    font-size: 0.95rem;
+    margin-top: 6px;
+}
+
+.menu-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    align-items: center;
+}
+
+.menu-row {
+    display: flex;
+    gap: 12px;
+    width: 100%;
+}
+
+.menu-row .btn {
+    flex: 1;
+}
+
+/* ===== BUTTONS ===== */
+
+.btn {
+    border: none;
+    border-radius: 8px;
+    padding: 14px 24px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s, opacity 0.15s;
+    width: 100%;
+    max-width: 280px;
+    text-align: center;
+    letter-spacing: 0.5px;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--gold), var(--terracotta));
+    color: var(--night);
+    font-size: 1.15rem;
+    padding: 16px 32px;
+}
+
+.btn-secondary {
+    background: rgba(253, 251, 247, 0.1);
+    color: var(--parchment);
+    border: 1px solid rgba(253, 251, 247, 0.25);
+}
+
+.btn-nav {
+    background: rgba(229, 169, 59, 0.1);
+    color: var(--gold);
+    border: 1px solid rgba(229, 169, 59, 0.3);
+    font-size: 0.9rem;
+    padding: 12px 16px;
+}
+
+.btn-danger {
+    background: rgba(211, 84, 0, 0.2);
+    color: #e74c3c;
+    border: 1px solid rgba(231, 76, 60, 0.4);
+}
+
+.btn-small {
+    padding: 8px 16px;
+    font-size: 0.85rem;
+    width: auto;
+    max-width: none;
+}
+
+.btn-disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.btn-icon {
+    background: rgba(253, 251, 247, 0.1);
+    border: 1px solid rgba(253, 251, 247, 0.2);
+    border-radius: 8px;
+    color: var(--parchment);
+    font-size: 1.2rem;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.btn-icon:hover {
+    background: rgba(253, 251, 247, 0.2);
+}
+
+/* ===== HUD ===== */
+
+.hud-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hud-info {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.hud-level {
+    background: rgba(229, 169, 59, 0.2);
+    border: 1px solid rgba(229, 169, 59, 0.4);
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-size: 0.85rem;
+    color: var(--gold);
+    font-weight: 600;
+}
+
+.hud-zone {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(39, 174, 96, 0.15);
+    border: 1px solid rgba(39, 174, 96, 0.3);
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-size: 0.85rem;
+    color: var(--emerald);
+}
+
+.zone-emblem {
+    display: block;
+    flex: 0 0 auto;
+    filter: drop-shadow(0 0 4px rgba(39, 174, 96, 0.5));
+}
+
+.hud-zone-name {
+    font-weight: 600;
+    letter-spacing: 0.4px;
+    color: var(--parchment);
+}
+
+.hud-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hud-coords {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.75rem;
+    letter-spacing: 0.3px;
+    color: rgba(253, 251, 247, 0.7);
+    background: rgba(0, 0, 0, 0.35);
+    padding: 5px 12px;
+    border-radius: 999px;
+    font-variant-numeric: tabular-nums;
+}
+
+.coord-compass {
+    display: block;
+    flex: 0 0 auto;
+    color: var(--gold);
+}
+
+/* ===== MODAL CARDS ===== */
+
+.modal-card {
+    background: linear-gradient(145deg, rgba(26, 19, 14, 0.97), rgba(60, 40, 20, 0.97));
+    border: 1px solid rgba(229, 169, 59, 0.3);
+    border-radius: 16px;
+    padding: 28px 24px;
+    max-width: 380px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+.modal-card h2 {
+    color: var(--gold);
+    text-align: center;
+    margin: 0 0 20px 0;
+    font-size: 1.4rem;
+    letter-spacing: 2px;
+}
+
+.modal-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+}
+
+/* ===== CHARACTER VIEW ===== */
+
+.character-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.char-portrait {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.char-placeholder {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: rgba(229, 169, 59, 0.1);
+    border: 2px solid var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+}
+
+.char-name {
+    color: var(--gold);
+    font-weight: 600;
+    margin: 0;
+}
+
+.char-stats {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.stat-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.9rem;
+}
+
+.stat-row span {
+    min-width: 70px;
+    color: rgba(253, 251, 247, 0.7);
+}
+
+.stat-bar {
+    flex: 1;
+    height: 8px;
+    background: rgba(253, 251, 247, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.stat-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--gold), var(--emerald));
+    border-radius: 4px;
+}
+
+/* ===== MISSIONS ===== */
+
+.missions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.mission-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px;
+    border-radius: 8px;
+    background: rgba(253, 251, 247, 0.05);
+    border: 1px solid rgba(253, 251, 247, 0.1);
+}
+
+.mission-item.active {
+    border-color: rgba(39, 174, 96, 0.4);
+    background: rgba(39, 174, 96, 0.08);
+}
+
+.mission-item.locked {
+    opacity: 0.5;
+}
+
+.mission-status {
+    font-size: 1rem;
+    margin-top: 2px;
+}
+
+.mission-title {
+    color: var(--parchment);
+    font-weight: 600;
+    margin: 0 0 4px 0;
+    font-size: 0.9rem;
+}
+
+.mission-desc {
+    color: rgba(253, 251, 247, 0.5);
+    margin: 0;
+    font-size: 0.8rem;
+}
+
+/* ===== REWARDS ===== */
+
+.rewards-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.reward-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 16px 8px;
+    border-radius: 10px;
+    background: rgba(253, 251, 247, 0.05);
+    border: 1px solid rgba(253, 251, 247, 0.1);
+    text-align: center;
+}
+
+.reward-item.claimed {
+    border-color: rgba(229, 169, 59, 0.4);
+    background: rgba(229, 169, 59, 0.08);
+}
+
+.reward-item.locked {
+    opacity: 0.4;
+}
+
+.reward-icon {
+    font-size: 1.8rem;
+}
+
+.reward-item p {
+    margin: 0;
+    font-size: 0.8rem;
+    color: rgba(253, 251, 247, 0.7);
+}
+
+/* ===== SETTINGS ===== */
+
+.settings-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.setting-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(253, 251, 247, 0.1);
+    font-size: 0.95rem;
+    cursor: pointer;
+}
+
+.setting-row:last-child {
+    border-bottom: none;
+}
+
+.setting-row input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    accent-color: var(--gold);
+    cursor: pointer;
+}
+
+/* ===== UTILITY ===== */
+
+.coming-soon {
+    text-align: center;
+    color: rgba(253, 251, 247, 0.4);
+    font-size: 0.85rem;
+    font-style: italic;
+    margin: 12px 0 16px 0;
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 480px) {
+    .game-title h1 {
+        font-size: 1.8rem;
+    }
+
+    .menu-content {
+        padding: 16px;
+        gap: 18px;
+    }
+
+    .btn {
+        padding: 12px 20px;
+        font-size: 0.9rem;
+    }
+
+    .btn-primary {
+        padding: 14px 28px;
+        font-size: 1.05rem;
+    }
+
+    .modal-card {
+        padding: 20px 16px;
+        max-width: 320px;
+    }
+
+    .menu-row {
+        flex-direction: column;
+    }
+}
+
+@media (min-width: 768px) {
+    .game-title h1 {
+        font-size: 3rem;
+    }
+
+    .menu-content {
+        gap: 32px;
+    }
+}
